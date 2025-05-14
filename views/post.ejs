@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/head') %>
+<body>
+    <%- include('includes/header') %>
+    <main>
+        <h1><%= post.title %></h1>
+
+        <article>
+            <div>
+                <p><%= post.body %></p>
+            </div>
+            <p><small>Posted by <%= post.author %> on <%= new Date(post.createdDate).getMonth()+1 %>/<%= new Date(post.createdDate).getDate() %>/<%= new Date(post.createdDate).getFullYear() %>   </small></p>   
+        </article>
+<a href="/edit-post/<%= post.id %>" class="button">Edit Post</a>
+<form action="/delete-post/<%= post.id %>" method="POST"><button>Delete Post</button></form>
+    </main>
+
+    <%- include('includes/footer') %>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/head') %>
+<body>
+    <%- include('includes/header') %>
+
+    <main>
+        <h3>Welcome To Your Dashboard</h3>
+
+        <style>
+            .post-cards {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .post-card {
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 16px;
+                width: 300px;
+                text-align: center;
+                background-color: #fff;
+                transition: transform 0.2s;
+            }
+
+            .post-card:hover {
+                transform: scale(1.05);
+            }
+
+            .post-card h4 {
+                margin: 0 0 10px;
+                font-size: 1.2em;
+            }
+
+            .post-card p {
+                color: #666;
+                font-size: 0.9em;
+            }
+
+            .post-card a {
+                text-decoration: none;
+                color: #007BFF;
+                font-weight: bold;
+            }
+
+            .post-card a:hover {
+                text-decoration: underline;
+            }
+        </style>
+
+        <div class="post-cards">
+            <% posts.forEach(post => { %>
+                <div class="post-card">
+                    <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
+                    <p>Posted on <%= new Date(post.createdDate).getMonth()+1 %>/<%= new Date(post.createdDate).getDate() %>/<%= new Date(post.createdDate).getFullYear() %></p>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <%- include('includes/footer') %>
+</body>
+</html>
